@@ -1,0 +1,37 @@
+#API Practica#
+
+##Usuarios##
+- GET
+	- /usuarios
+	- /usuarios/:id
+- POST
+	- /usuarios/registrar
+	- /usuarios/autentificar
+- PUT
+	- /usuarios/modificar/:id
+- DELETE
+	- /usuarios/borrar/:id
+
+
+##Temas##
+- GET
+	- /temas
+	- /temas/:id
+- POST
+	- /temas/registrar
+- PUT
+	- /temas/modificar/:id
+- DELETE
+	- /temas/borrar/:id
+
+
+##Decision##
+- GET
+	- /decision
+	- /decision/:id
+- POST
+	- /decision/registrar
+- PUT
+	- /decision/modificar/:id'
+- DELETE
+	- /decision/borrar/:id
