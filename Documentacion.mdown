@@ -17,6 +17,8 @@
 - GET
 	- /temas
 	- /temas/:id
+	- /temas/:email
+	- /temas/usuario/:nombre
 - POST
 	- /temas/registrar
 - PUT
