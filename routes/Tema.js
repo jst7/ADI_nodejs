@@ -6,9 +6,15 @@ require('../aux')();
 
 //TEMA
 //OBTERNER LISTA
+  /**
+  * Este funcion es para obtener todos los temas
+  * @name Obtener_lista_temas
+  * @param {res} resultado de la consulta a la bd
+  * @example /temas
+  * @return {resultado consulta}
+  */
 tema.get('/',autenticaBasic,function(req,res){
 
-var login = req.params.id;
     connect().query('select * from Tema', function(err, rows, fields) {
     if (err){
       res.status(500).send(Hipermedia('No tiene Temas',2));
@@ -18,6 +24,13 @@ var login = req.params.id;
   });
 });
 
+  /**
+  * Este funcion es para obtener un tema por id
+  * @name Obtener_tema_id
+  * @param {res} resultado de la consulta a la bd
+  * @example /temas/id
+  * @return {resultado consulta}
+  */
 //OBTENER TEMA POR ID
 tema.get('/:id',autenticaBasic,function(req,res){
 
@@ -32,7 +45,14 @@ var id = req.params.id;
   });
 });
 
-//OBTENER TEMA POR USER EMAIL
+  /**
+  * Este funcion es para obtener una decision por usuario
+  * @name Obtener_tema_nombreUsuario
+  * @param {res} resultado de la consulta a la bd
+  * @example /temas/:nombre
+  * @return {resultado consulta}
+  */
+//OBTENER TEMA POR USER
 tema.get('/usuario/:nombre',autenticaBasic,function(req,res){
 
 var nombre = req.params.nombre;
@@ -46,6 +66,13 @@ var nombre = req.params.nombre;
   });
 });
 
+  /**
+  * Este funcion es para registrar un tema
+  * @name Registrar_tema
+  * @param {res} resultado de la consulta a la bd
+  * @example /tema/registrar (POST con (usuario, titulo, descripcion))
+  * @return {resultado consulta}
+  */
 //REGISTRAR
 tema.post('/registrar',autenticaBasic,function(req,res){
   var usuario = req.body.usuario;
@@ -61,6 +88,13 @@ tema.post('/registrar',autenticaBasic,function(req,res){
 });
 
 
+  /**
+  * Este funcion es para borrar un tema
+  * @name Borrar_tema
+  * @param {res} resultado de la consulta a la bd
+  * @example /temas/borrar/id (DELETE)
+  * @return {resultado consulta}
+  */
 //BORRAR
 tema.delete('/borrar/:id',autenticaBasic,function(req,res){
   var iduser = req.params.id;
@@ -73,6 +107,13 @@ tema.delete('/borrar/:id',autenticaBasic,function(req,res){
   });
 });
 
+  /**
+  * Este funcion es para modificar un tema
+  * @name Modififcar_tema
+  * @param {res} resultado de la consulta a la bd
+  * @example /temas/modificar/id (PUT con (titulo, descripcion))
+  * @return {resultado consulta}
+  */
 //MOFICAR
 tema.put('/modificar/:id',autenticaBasic,function(req,res){
   var id = req.params.id;

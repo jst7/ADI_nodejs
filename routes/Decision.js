@@ -7,6 +7,13 @@ require('../aux')();
 
 //Decision
 //OBTERNER LISTA
+  /**
+  * Este funcion es para obtener todas las decisiones
+  * @name Obtener_lista_decisiones
+  * @param {res} resultado de la consulta a la bd
+  * @example /decision
+  * @return {resultado consulta}
+  */
 decision.get('/',autenticaBasic,function(req,res){
 
     connect().query('select * from Decision', function(err, rows, fields) {
@@ -18,6 +25,13 @@ decision.get('/',autenticaBasic,function(req,res){
   });
 });
 
+  /**
+  * Este funcion es para obtener una decision por id
+  * @name Obtener_decision_id
+  * @param {res} resultado de la consulta a la bd
+  * @example /decision/id
+  * @return {resultado consulta}
+  */
 decision.get('/:id',autenticaBasic,function(req,res){
 
 var id = req.params.id;
@@ -31,6 +45,13 @@ var id = req.params.id;
   });
 });
 
+  /**
+  * Este funcion es para obtener el tema de una decision
+  * @name Obtener_tema_decision
+  * @param {res} resultado de la consulta a la bd
+  * @example /decision/tema/id
+  * @return {resultado consulta}
+  */
 decision.get('/tema/:tema',autenticaBasic,function(req,res){
 
 var tema = req.params.tema;
@@ -44,6 +65,13 @@ var tema = req.params.tema;
   });
 });
 
+  /**
+  * Este funcion es para registrar una decision
+  * @name Registrar_decision
+  * @param {res} resultado de la consulta a la bd
+  * @example /decision/registrar (POST con (tema, descripcion))
+  * @return {resultado consulta}
+  */
 //REGISTRAR
 decision.post('/registrar',autenticaBasic,function(req,res){
   var tema = req.body.tema;
@@ -57,7 +85,13 @@ decision.post('/registrar',autenticaBasic,function(req,res){
   }
 });
 
-
+  /**
+  * Este funcion es para borrar una decision
+  * @name Borrar_decision
+  * @param {res} resultado de la consulta a la bd
+  * @example /decision/borrar/id (DELETE)
+  * @return {resultado consulta}
+  */
 //BORRAR
 decision.delete('/borrar/:id',autenticaBasic,function(req,res){
   var iduser = req.params.id;
@@ -70,7 +104,14 @@ decision.delete('/borrar/:id',autenticaBasic,function(req,res){
   });
 });
 
-//MOFICAR
+  /**
+  * Este funcion es para modificar una decision
+  * @name Modififcar_decision
+  * @param {res} resultado de la consulta a la bd
+  * @example /decision/modificar/id (PUT con (descripcion))
+  * @return {resultado consulta}
+  */
+//MODIFICAR
 decision.put('/modificar/:id',autenticaBasic,function(req,res){
   var id = req.params.id;
   //var tema = req.body.titulo; no tiene sentido cambiarla de tema

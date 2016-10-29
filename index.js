@@ -5,7 +5,11 @@ require('./aux')();
 var app = express();
 app.use(bodyParser());
 
-//RUTAS de ARCHIVOS
+//documentation build
+//documentation serve
+//http://localhost:4001/
+
+//RUTAS de ARCHIVOS 
 var usuarios = require('./routes/Usuario')
 app.use('/usuarios',usuarios)
 
