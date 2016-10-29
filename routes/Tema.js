@@ -2,96 +2,90 @@ var express = require('express');
 var tema = express.Router();
 module.exports = tema;
 
-var mysql      = require('mysql');
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'mads',
-  database : 'ADI_Prac'
-});
+require('../aux')();
 
 //TEMA
 //OBTERNER LISTA
-tema.get('/',function(req,res){
+tema.get('/',autenticaBasic,function(req,res){
 
 var login = req.params.id;
-    connection.query('select * from Tema', function(err, rows, fields) {
+    connect().query('select * from Tema', function(err, rows, fields) {
     if (err){
-      res.status(500).send('No tiene Temas');
+      res.status(500).send(Hipermedia('No tiene Temas',2));
     }else{
-      res.status(200).send(rows);
+      res.status(200).send(Hipermedia(rows,2));
     }
   });
 });
 
 //OBTENER TEMA POR ID
-tema.get('/:id',function(req,res){
+tema.get('/:id',autenticaBasic,function(req,res){
 
 var id = req.params.id;
   
-    connection.query('select * from Tema where id='+id+'', function(err, rows, fields) {
+    connect().query('select * from Tema where id='+id+'', function(err, rows, fields) {
     if (err){
-      res.status(500).send('No existe el Tema');
+      res.status(500).send(Hipermedia('No existe el Tema',2));
     }else{
-      res.status(200).send(rows);
+      res.status(200).send(Hipermedia(rows,2));
     }
   });
 });
 
 //OBTENER TEMA POR USER EMAIL
-tema.get('/usuario/:nombre',function(req,res){
+tema.get('/usuario/:nombre',autenticaBasic,function(req,res){
 
 var nombre = req.params.nombre;
   
-    connection.query('select * from Tema where usuario=\''+nombre+'\'', function(err, rows, fields) {
+    connect().query('select * from Tema where usuario=\''+nombre+'\'', function(err, rows, fields) {
     if (err){
-      res.status(500).send('El usuario no tiene Temas');
+      res.status(500).send(Hipermedia('El usuario no tiene Temas',2));
     }else{
-      res.status(200).send(rows);
+      res.status(200).send(Hipermedia(rows,2));
     }
   });
 });
 
 //REGISTRAR
-tema.post('/registrar',function(req,res){
+tema.post('/registrar',autenticaBasic,function(req,res){
   var usuario = req.body.usuario;
   var titulo = req.body.titulo;
   var descripcion = req.body.descripcion;
   try{
-      connection.query('insert into Tema (usuario,titulo,descripcion) values (\''+usuario+'\',\''+titulo+'\',\''+descripcion+'\');', function(err, rows, fields) { 
-      res.status(200).send('Tema Registrado ' );
+      connect().query('insert into Tema (usuario,titulo,descripcion) values (\''+usuario+'\',\''+titulo+'\',\''+descripcion+'\');', function(err, rows, fields) { 
+      res.status(200).send(Hipermedia('Tema Registrado ',2 ));
       })
   }catch(Ex){
-      res.status(401).send(Ex);
+      res.status(401).send(Hipermedia(Ex,2));
   }
 });
 
 
 //BORRAR
-tema.delete('/borrar/:id',function(req,res){
+tema.delete('/borrar/:id',autenticaBasic,function(req,res){
   var iduser = req.params.id;
-  connection.query('delete from Tema where id = \''+iduser+'\';', function(err, rows, fields) {
+  connect().query('delete from Tema where id = \''+iduser+'\';', function(err, rows, fields) {
     if (err || rows.affectedRows==0){
-      res.status(500).send('Tema no Borrado');
+      res.status(500).send(Hipermedia('Tema no Borrado',2));
     }else{
-      res.status(200).send('Tema id:'+ iduser+' Borrado');
+      res.status(200).send(Hipermedia('Tema id:'+ iduser+' Borrado',2));
     }
   });
 });
 
 //MOFICAR
-tema.put('/modificar/:id',function(req,res){
+tema.put('/modificar/:id',autenticaBasic,function(req,res){
   var id = req.params.id;
   //var usuario = req.body.usuario; No tiene sentido modificar el usuario
   var titulo = req.body.titulo;
   var descripcion = req.body.descripcion;
 
-  connection.query('UPDATE Tema SET titulo=\''+titulo+'\', descripcion=\''+descripcion+'\' WHERE id='+id+'', function(err, rows, fields) {
+  connect().query('UPDATE Tema SET titulo=\''+titulo+'\', descripcion=\''+descripcion+'\' WHERE id='+id+'', function(err, rows, fields) {
 
     if (err || rows.affectedRows==0){
-      res.status(500).send('Tema no modificado');
+      res.status(500).send(Hipermedia('Tema no modificado',2));
     }else{
-      res.status(200).send('Tema modificado');
+      res.status(200).send(Hipermedia('Tema modificado',2));
     }
   });
 });

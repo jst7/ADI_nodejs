@@ -5,7 +5,9 @@ var supertest = require('supertest');
 describe('prueba de la app web', function(){
     it('/devuelve el contenido adecuado', function(done){
 
-        supertest(work) 
+    	console.log("hola")
+
+        supertest(work)
             .get('/usuarios')
             .expect(200)
             .expect(done);
