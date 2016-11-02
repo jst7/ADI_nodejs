@@ -103,13 +103,24 @@ module.exports = function() {
   	return token
  	}
 
- 	 this.ComprobarToken = function(cad) {
+ 	this.ComprobarToken = function(cad) {
 		var token = ''
 		var secret = 'Jst*Jqa#2701';
 		var pass64 = new Buffer(secret).toString('base64') 
 		var token = jwt.decode(cad, pass64);
 				  
   	return token
+  }
+
+  this.paginacion = function(pet, rows){
+  	var pagina =pet.query.pagina
+  	var consulta=''
+
+  	if(pagina != undefined && pagina > 0){
+  		consulta = ' LIMIT ' + ((pagina*5) - 5) + ', ' + rows
+  	}
+
+  	return consulta;
   }
  	
 }

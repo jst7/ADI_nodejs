@@ -8,7 +8,7 @@ require('../aux')();
 //Decision
 //OBTERNER LISTA
   /**
-  * Este funcion es para obtener todas las decisiones
+  * Este funcion es para obtener todas las decisiones con su tema
   * @name Obtener_lista_decisiones
   * @param {res} resultado de la consulta a la bd
   * @example /decision
@@ -26,7 +26,7 @@ decision.get('/',autenticaBasic,function(req,res){
 });
 
   /**
-  * Este funcion es para obtener una decision por id
+  * Este funcion es para obtener una decision por id con su tema
   * @name Obtener_decision_id
   * @param {res} resultado de la consulta a la bd
   * @example /decision/id
@@ -47,6 +47,27 @@ var id = req.params.id;
 
   /**
   * Este funcion es para obtener el tema de una decision
+  * @name Obtener_tema_decision
+  * @param {res} resultado de la consulta a la bd
+  * @example /decision/tema/id
+  * @return {resultado consulta}
+  */
+decision.get('/tema/:tema',autenticaBasic,function(req,res){
+
+var tema = req.params.tema;
+  
+    connect().query('select * from Decision where tema=\''+tema+'\'', function(err, rows, fields) {
+    if (err){
+      res.status(500).send(Hipermedia('No existen decisiones para esta decision;',3));
+    }else{
+      res.status(200).send(Hipermedia(rows,3));
+    }
+  });
+});
+
+
+  /**
+  * Este funcion es para obtener el usuario de una decision
   * @name Obtener_tema_decision
   * @param {res} resultado de la consulta a la bd
   * @example /decision/tema/id

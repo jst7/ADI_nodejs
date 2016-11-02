@@ -7,7 +7,7 @@ require('../aux')();
 
 //OBTERNER LISTA
   /**
-  * Este funcion es para obtener todas los usuarios
+  * Este funcion es para obtener todas los usuarios y no saca los temas relacionados
   * @name Obtener_lista_usuarios
   * @param {res} resultado de la consulta a la bd
   * @example /usuarios
@@ -15,8 +15,11 @@ require('../aux')();
   */
 usuario.get('/',autenticaBasic,function(req,res){
 
-    connect().query('select * from Usuario', function(err, rows, fields) {
-      if (err){
+    var testo = paginacion(req,5)
+    var consulta = 'select * from Usuario' + testo
+
+    connect().query(consulta, function(err, rows, fields) {
+      if (err || rows.length==0){
         res.status(500).send(Hipermedia('No tiene Usuario',1))
       }else{
         res.status(200).send(Hipermedia(rows,1))
@@ -25,7 +28,7 @@ usuario.get('/',autenticaBasic,function(req,res){
 });
 
   /**
-  * Este funcion es para obtener un usuario por id
+  * Este funcion es para obtener un usuario por id no saca los temas relacionados
   * @name Obtener_usuario_id
   * @param {res} resultado de la consulta a la bd
   * @example /usuarios/id
@@ -36,7 +39,7 @@ usuario.get('/:id',autenticaBasic,function(req,res){
   var id = req.params.id;
     
       connect().query('select * from Usuario where id='+id+'', function(err, rows, fields) {
-        if (err){
+        if (err ){
           res.status(500).send(Hipermedia('No existe el usuario',1))
         }else{
           res.status(200).send(Hipermedia(rows,1))
@@ -58,9 +61,21 @@ usuario.post('/registrar',autenticaBasic,function(req,res){
   var email = req.body.email;
 
   try{
+  connect().query('select * from Usuario Where email=\''+email+'\'', function(err, rows, fields) { 
+
+    if(rows.length==0){
       connect().query('insert into Usuario (nombre,contraseña,email) values (\''+nombre+'\',\''+pass+'\',\''+email+'\');', function(err, rows, fields) { 
-      res.status(200).send(Hipermedia('Usuario Registrado ',1 ))
+      if (err){
+        res.status(500).send(Hipermedia('ERROR SERVER',1))
+      }else{
+        res.status(200).send(Hipermedia('Usuario Registrado ',1 ))
+      }
       })
+    }
+    else{
+      res.status(401).send(Hipermedia('Ya registrado',1))
+    }
+    })
   }catch(Ex){
       res.status(401).send(Hipermedia(Ex,1));
   }
@@ -100,12 +115,13 @@ usuario.post('/autentificar',autenticaBasic,function(req,res){
   var email = req.body.email;
 
   try{
+
       connect().query('select contraseña, email from Usuario where contraseña=\''+pass+'\'and email=\''+email+'\'', function(err, rows, fields) { 
 
       if(rows.length==1){
         res.status(200).send(Hipermedia(['Usuario Autentificado',"token: "+GenerarToken(email+"#"+pass)],1));
       }else{
-        res.status(200).send(Hipermedia('Usuario NO Autentificado',1));
+        res.status(401).send(Hipermedia('Usuario NO Autentificado incorrecto',1));
       }      
       })
   }catch(Ex){

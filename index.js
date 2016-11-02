@@ -19,6 +19,12 @@ app.use('/temas',temas)
 var decision = require('./routes/Decision')
 app.use('/decision',decision)
 
+app.get('/deletebd',autenticaBasic,function(req,res){
+    connect().query('CALL vaciar();', function(err, rows, fields) {
+    	res.status(200).send("Base de datos eliminada")
+    });
+});
+
 //PUERTO
 app.listen(process.env.PORT || 5000, function(){
     console.log('Express en el puerto 5000');

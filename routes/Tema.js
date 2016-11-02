@@ -7,7 +7,7 @@ require('../aux')();
 //TEMA
 //OBTERNER LISTA
   /**
-  * Este funcion es para obtener todos los temas
+  * Este funcion es para obtener todos los temas, no saca las decisiones relacionadas
   * @name Obtener_lista_temas
   * @param {res} resultado de la consulta a la bd
   * @example /temas
@@ -25,7 +25,7 @@ tema.get('/',autenticaBasic,function(req,res){
 });
 
   /**
-  * Este funcion es para obtener un tema por id
+  * Este funcion es para obtener un tema por id no saca las decisiones relacionadas
   * @name Obtener_tema_id
   * @param {res} resultado de la consulta a la bd
   * @example /temas/id
@@ -46,7 +46,7 @@ var id = req.params.id;
 });
 
   /**
-  * Este funcion es para obtener una decision por usuario
+  * Este funcion es para obtener los temas por usuario, no saca las decisiones relacionadas
   * @name Obtener_tema_nombreUsuario
   * @param {res} resultado de la consulta a la bd
   * @example /temas/:nombre
