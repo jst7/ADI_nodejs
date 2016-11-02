@@ -1,5 +1,6 @@
 var mysql   = require('mysql');
 var jwt   = require('jwt-simple');
+var isInteger = require("is-integer");
 
 
 module.exports = function() { 
@@ -117,11 +118,50 @@ module.exports = function() {
   	var consulta=''
 
   	if(pagina != undefined && pagina > 0){
-  		consulta = ' LIMIT ' + ((pagina*5) - 5) + ', ' + rows
+  		consulta = ' LIMIT ' + ((pagina*itemPorPagina) - itemPorPagina) + ', ' + rows
   	}
 
   	return consulta;
   }
+
+  this.paginas_paginacion=function(esqueleto, posicion, ultima){
+  	var antes = posicion;
+  	if(antes>1){
+  		antes=antes-1;
+  	}
+
+  	var siguiente = posicion;
+  	if(siguiente!=ultima){
+  		siguiente=parseInt(siguiente)+1;
+  	}
+  	var last= ultima/5;
+  	if(ultima%5!=0){
+  		last=parseInt(last.toFixed())+1;
+  	}
+  	
+
+  	var salida = [{ anterior: esqueleto + '?pagina=' + antes,
+                    siguiente: esqueleto + '?pagina=' + siguiente,
+                    última: esqueleto + '?pagina=' + last
+                    }]
+    return salida;
+  }
+
+  this.ultimaPosicion = function(esqueleto, callback){
+
+  	var fin=0;
+ 	connect().query("SELECT count(*) as total FROM " + esqueleto, function(err, result ){
+  		
+ 		if(err){
+ 			callback(err,null);
+ 		}
+ 		else{
+ 			callback(null,result[0].total);
+ 		}
+  		
+  	});
+  }
+  this.itemPorPagina=5;
  	
 }
 

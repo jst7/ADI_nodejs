@@ -13,17 +13,20 @@ require('../aux')();
   * @example /usuarios
   * @return {resultado consulta}
   */
-usuario.get('/',autenticaBasic,function(req,res){
+usuario.get('/',autenticaBasic,function(req,res,next){
 
+ultimaPosicion('Usuario', function(err, total){
     var testo = paginacion(req,5)
     var consulta = 'select * from Usuario' + testo
 
+    var paginas = paginas_paginacion("usuarios/",req.query.pagina,total)
     connect().query(consulta, function(err, rows, fields) {
       if (err || rows.length==0){
         res.status(500).send(Hipermedia('No tiene Usuario',1))
       }else{
-        res.status(200).send(Hipermedia(rows,1))
+        res.status(200).send(Hipermedia([rows,paginas],1))
       }
+  });
   });
 });
 
