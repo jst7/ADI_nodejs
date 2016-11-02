@@ -16,12 +16,18 @@ require('../aux')();
   */
 decision.get('/',autenticaBasic,function(req,res){
 
-    connect().query('select * from Decision', function(err, rows, fields) {
+  ultimaPosicion('Decision', function(err, total){
+    var testo = paginacion(req,itemPorPagina)
+    var consulta = 'select * from Decision' + testo
+
+    var paginas = paginas_paginacion("decision/",req.query.pagina,total)
+    connect().query(consulta, function(err, rows, fields) {
     if (err){
       res.status(500).send(Hipermedia('No tiene Decisiones',3))
     }else{
-      res.status(200).send(Hipermedia(rows,3))
+      res.status(200).send(Hipermedia([rows,paginas],3))
     }
+  });
   });
 });
 
@@ -97,8 +103,9 @@ var tema = req.params.tema;
 decision.post('/registrar',autenticaBasic,function(req,res){
   var tema = req.body.tema;
   var descripcion = req.body.descripcion;
+  var usuario =req.body.usuario;
   try{
-      connect().query('insert into Decision (tema,descripcion) values (\''+tema+'\',\''+descripcion+'\');', function(err, rows, fields) { 
+      connect().query('insert into Decision (tema,descripcion,usuario) values (\''+tema+'\',\''+descripcion+'\',\''+usuario+'\');', function(err, rows, fields) { 
       res.status(200).send(Hipermedia('Decision Registrada',3 ));
       })
   }catch(Ex){

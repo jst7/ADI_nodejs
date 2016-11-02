@@ -130,15 +130,15 @@ module.exports = function() {
   		antes=antes-1;
   	}
 
-  	var siguiente = posicion;
-  	if(siguiente!=ultima){
-  		siguiente=parseInt(siguiente)+1;
-  	}
   	var last= ultima/5;
   	if(ultima%5!=0){
   		last=parseInt(last.toFixed())+1;
   	}
-  	
+
+  	var siguiente = posicion;
+  	if(siguiente!=last && siguiente < last){
+  		siguiente=parseInt(siguiente)+1;
+  	}
 
   	var salida = [{ anterior: esqueleto + '?pagina=' + antes,
                     siguiente: esqueleto + '?pagina=' + siguiente,

@@ -16,7 +16,7 @@ require('../aux')();
 usuario.get('/',autenticaBasic,function(req,res,next){
 
 ultimaPosicion('Usuario', function(err, total){
-    var testo = paginacion(req,5)
+    var testo = paginacion(req,itemPorPagina)
     var consulta = 'select * from Usuario' + testo
 
     var paginas = paginas_paginacion("usuarios/",req.query.pagina,total)

@@ -15,12 +15,18 @@ require('../aux')();
   */
 tema.get('/',autenticaBasic,function(req,res){
 
-    connect().query('select * from Tema', function(err, rows, fields) {
+  ultimaPosicion('Tema', function(err, total){
+    var testo = paginacion(req,itemPorPagina)
+    var consulta = 'select * from Tema' + testo
+
+    var paginas = paginas_paginacion("temas/",req.query.pagina,total)
+    connect().query(consulta, function(err, rows, fields) {
     if (err){
       res.status(500).send(Hipermedia('No tiene Temas',2));
     }else{
-      res.status(200).send(Hipermedia(rows,2));
+      res.status(200).send(Hipermedia([rows,paginas],2));
     }
+  });
   });
 });
 
