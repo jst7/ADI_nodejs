@@ -92,6 +92,24 @@ module.exports = function() {
 		            href: "/modificar/id"}
 		            ]
           		]
+ 			}else if(tipo == 4){
+ 			return [sol, [{rel: "solucion",
+		            tipo: "GET",
+		            href: "/"},
+		            {rel: "solucion id",
+		            tipo: "GET",
+		            href: "/id"},
+		            {rel: "solucion registrar",
+		            tipo: "POST (JSON CAMPOS (tema,descripcion))",
+		            href: "/"},
+		            {rel: "solucion borrar",
+		            tipo: "DELETE",
+		            href: "/id"},
+		            {rel: "solucion modificar",
+		            tipo: "PUT (JSON CAMPOS (descripcion))",
+		            href: "/id"}
+		            ]
+          		]
  			}
  		}
 
@@ -130,9 +148,13 @@ module.exports = function() {
   		antes=antes-1;
   	}
 
-  	var last= ultima/5;
-  	if(ultima%5!=0){
+  	var last= ultima/itemPorPagina;
+
+  	if(ultima%itemPorPagina!=0){
   		last=parseInt(last.toFixed())+1;
+
+  	}else if(ultima<itemPorPagina){
+  		last=1
   	}
 
   	var siguiente = posicion;

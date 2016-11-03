@@ -7,10 +7,10 @@ require('../aux')();
 
 //OBTERNER LISTA
   /**
-  * Este funcion es para obtener todas los usuarios y no saca los temas relacionados
+  * Este funcion es para obtener todas los usuarios y no saca objetos relacionados por el peso que puede tener en grandes cantidades.
   * @name Obtener_lista_usuarios
   * @param {res} resultado de la consulta a la bd
-  * @example /usuarios?pagina=1 (cualquier numero)
+  * @example /usuarios?pagina=1 (cualquier numero) (GET)
   * @return {resultado consulta}
   */
 usuario.get('/',autenticaBasic,function(req,res,next){
@@ -31,10 +31,10 @@ ultimaPosicion('Usuario', function(err, total){
 });
 
   /**
-  * Este funcion es para obtener un usuario por id no saca los temas relacionados
+  * Este funcion es para obtener un usuario por id no saca los problemas relacionados
   * @name Obtener_usuario_id
   * @param {res} resultado de la consulta a la bd
-  * @example /usuarios/id
+  * @example /usuarios/id (GET)
   * @return {resultado consulta}
   */
 usuario.get('/:id',autenticaBasic,function(req,res){
@@ -108,7 +108,7 @@ usuario.delete('/:id',autenticaBasic,function(req,res){
   * Este funcion es para autentificar un usuario
   * @name Autentificar_usuario
   * @param {res} resultado de la consulta a la bd
-  * @example /usuarios/id (POST con (pass nombre))
+  * @example /usuarios/id (POST con (pass email))
   * @return {resultado consulta}
   */
 //AUTENTIFICAR
@@ -136,7 +136,7 @@ usuario.post('/autentificar',autenticaBasic,function(req,res){
   * Este funcion es para modificar un usuario
   * @name Modififcar_usuario
   * @param {res} resultado de la consulta a la bd
-  * @example /usuarios/modificar/id (PUT con (nombre, contraseña, email))
+  * @example /usuarios/id (PUT con (nombre, contraseña, email))
   * @return {resultado consulta}
   */
 //MODIFICAR

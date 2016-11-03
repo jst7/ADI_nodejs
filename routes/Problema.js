@@ -7,10 +7,10 @@ require('../aux')();
 //Problema
 //OBTERNER LISTA
   /**
-  * Este funcion es para obtener todos los Problemas, no saca las decisiones relacionadas
+  * Este funcion es para obtener todos los Problemas, no saca las preguntas relacionadas pero si el usuario
   * @name Obtener_lista_Problemas
   * @param {res} resultado de la consulta a la bd
-  * @example /problemas
+  * @example /problemas?pagina=1 (GET)
   * @return {resultado consulta}
   */
 Problema.get('/',autenticaBasic,function(req,res){
@@ -34,7 +34,7 @@ Problema.get('/',autenticaBasic,function(req,res){
   * Este funcion es para obtener un Problema por id no saca las decisiones relacionadas
   * @name Obtener_Problema_id
   * @param {res} resultado de la consulta a la bd
-  * @example /Problemas/id
+  * @example /Problemas/id (GET)
   * @return {resultado consulta}
   */
 //OBTENER Problema POR ID
@@ -55,7 +55,7 @@ var id = req.params.id;
   * Este funcion es para obtener los Problemas por usuario, no saca las decisiones relacionadas
   * @name Obtener_Problema_nombreUsuario
   * @param {res} resultado de la consulta a la bd
-  * @example /Problemas/:nombre
+  * @example /Problemas/:nombre (GET)
   * @return {resultado consulta}
   */
 //OBTENER Problema POR USER
@@ -121,7 +121,7 @@ Problema.delete('/:id',autenticaBasic,function(req,res){
   * @return {resultado consulta}
   */
 //MODIFICAR
-Problema.put('/modificar/:id',autenticaBasic,function(req,res){
+Problema.put('/:id',autenticaBasic,function(req,res){
   var id = req.params.id;
   //var usuario = req.body.usuario; No tiene sentido modificar el usuario
   var titulo = req.body.titulo;

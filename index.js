@@ -24,7 +24,7 @@ app.use('/solucion',solucion)
 
 app.get('/deletebd',autenticaBasic,function(req,res){
     connect().query('CALL vaciar();', function(err, rows, fields) {
-    	res.status(200).send("Base de datos eliminada")
+    	res.status(200).send("Base de datos Respuesta a 0 y rellenada")
     });
 });
 
