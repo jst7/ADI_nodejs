@@ -10,7 +10,7 @@ require('../aux')();
   * Este funcion es para obtener todas los usuarios y no saca los temas relacionados
   * @name Obtener_lista_usuarios
   * @param {res} resultado de la consulta a la bd
-  * @example /usuarios
+  * @example /usuarios?pagina=1 (cualquier numero)
   * @return {resultado consulta}
   */
 usuario.get('/',autenticaBasic,function(req,res,next){
@@ -42,7 +42,7 @@ usuario.get('/:id',autenticaBasic,function(req,res){
   var id = req.params.id;
     
       connect().query('select * from Usuario where id='+id+'', function(err, rows, fields) {
-        if (err ){
+        if (err || rows.length==0){
           res.status(500).send(Hipermedia('No existe el usuario',1))
         }else{
           res.status(200).send(Hipermedia(rows,1))
@@ -54,11 +54,11 @@ usuario.get('/:id',autenticaBasic,function(req,res){
   * Este funcion es para registrar un usuario
   * @name Registrar_usuario
   * @param {res} resultado de la consulta a la bd
-  * @example /usuarios/registrar (POST con (nombre, pass, email))
+  * @example /usuarios (POST con (nombre, pass, email))
   * @return {resultado consulta}
   */
 //REGISTRAR
-usuario.post('/registrar',autenticaBasic,function(req,res){
+usuario.post('/',autenticaBasic,function(req,res){
   var nombre = req.body.nombre;
   var pass = req.body.contraseña;
   var email = req.body.email;
@@ -93,7 +93,7 @@ usuario.post('/registrar',autenticaBasic,function(req,res){
   * @return {resultado consulta}
   */
 //BORRAR
-usuario.delete('/borrar/:id',autenticaBasic,function(req,res){
+usuario.delete('/:id',autenticaBasic,function(req,res){
   var iduser = req.params.id;
   connect().query('delete from Usuario where id = \''+iduser+'\';', function(err, rows, fields) {
     if (err || rows.affectedRows==0){
@@ -140,7 +140,7 @@ usuario.post('/autentificar',autenticaBasic,function(req,res){
   * @return {resultado consulta}
   */
 //MODIFICAR
-usuario.put('/modificar/:id',autenticaBasic,function(req,res){
+usuario.put('/:id',autenticaBasic,function(req,res){
   var id = req.params.id;
   var nombre = req.body.nombre;
   var contraseña = req.body.contraseña;
