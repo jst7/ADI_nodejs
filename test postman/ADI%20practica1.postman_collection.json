@@ -1,0 +1,1122 @@
+{
+	"variables": [],
+	"info": {
+		"name": "ADI practica1",
+		"_postman_id": "2252988c-f095-5116-a1a0-510e0241b989",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "INICIAR A 0 la BD",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/deletebd",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Registro usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/usuarios",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"nombre\": \"ultimo\",\n    \"contraseña\": \"12345678\",\n    \"email\": \"ultimo@jorge.com\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Comprobar usuario registrado en la ultima pagina",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Contiene usuario ultimo\"] = responseBody.has(\"ultimo\");\n\n"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/usuarios?pagina=3",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Autentificar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Usuario Autentificado\"] = responseBody.has(\"Usuario Autentificado\");\ntests[\"token\"] = responseBody.has(\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.IkpvcmdlQGpvcmdlLmNvbSMxMjM0NTYi.GUv6zuiVWyVuWvkTUDR05o5yKjSDz2O83dQ2bnPztUY\");"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/usuarios/autentificar",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"email\": \"Jorge@jorge.com\",\n    \"contraseña\": \"123456\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Autentificar incorrecta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 401\"] = responseCode.code === 401;\ntests[\"Usuario NO Autentificado incorrecto\"] = responseBody.has(\"Usuario NO Autentificado incorrecto\");"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/usuarios/autentificar",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"email\": \"Jorge@jorge.com\",\n    \"contraseña\": \"1234567\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Registro usuario 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/usuarios",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"nombre\": \"Judit\",\n    \"contraseña\": \"12345678\",\n    \"email\": \"Judit@jorge.com\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Recuperar un usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Recuperar usuario 13 recien registrado\"] = responseBody.has(\"Judit\");\n"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/usuarios/13",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "borrado usuario id 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/usuarios/1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Autentificacion incorrecta por borrar usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 401\"] = responseCode.code === 401;\ntests[\"Usuario NO Autentificado incorrecto\"] = responseBody.has(\"Usuario NO Autentificado incorrecto\");"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/usuarios/autentificar",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"email\": \"Jorge@jorge.com\",\n    \"contraseña\": \"123456\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar usuario 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/usuarios/2",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"nombre\": \"JorgeyJudit\",\n    \"contraseña\": \"molamuchoymas\",\n    \"email\": \"judityjorge@gmail.com\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Autentificacion de usuario modificado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Usuario Autentificado\"] = responseBody.has(\"Usuario Autentificado\");"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/usuarios/autentificar",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"contraseña\": \"molamuchoymas\",\n    \"email\": \"judityjorge@gmail.com\"\n  }\n  \n\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "comprobar paginas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Contiene usuario ultimo con emil ultimo@jorge.com\"] = responseBody.has(\"usuarios/?pagina=1\");\ntests[\"Contiene usuario ultimo con emil ultimo@jorge.com\"] = responseBody.has(\"usuarios/?pagina=3\");\n\n        \n        "
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/usuarios?pagina=2",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Listar problemas con paginas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Body is correct\"] = responseBody.has(\"hola como eres\");\ntests[\"pagina1\"] = responseBody.has(\"pagina=1\");\ntests[\"pagina2\"] = responseBody.has(\"pagina=2\");\ntests[\"pagina3\"] = responseBody.has(\"pagina=3\");"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/problemas?pagina=1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "problema por id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"pagina3\"] = responseBody.has(\"hola\");"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/problemas/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "busqueda de problema por titulo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"hola\"] = responseBody.has(\"hola\");\ntests[\"sola\"] = responseBody.has(\"sola\");"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/problemas/titulo/ola",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "busqueda de problema por usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"p1\"] = responseBody.has(\"yola\");\ntests[\"p2\"] = responseBody.has(\"fola\");"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/problemas/usuario/hector",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Registrar problema",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"mensaje\"] = responseBody.has(\"Problema Registrado \");\n"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/Problemas?pagina=3",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"usuario\": \"jorge\",\n    \"titulo\": \"tiyy\",\n    \"descripcion\": \"blablabbla\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "comprobar registrado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"titulo\"] = responseBody.has(\"tiyy\");\n"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/Problemas?pagina=3",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"usuario\": \"jorge\",\n    \"titulo\": \"tiyy\",\n    \"descripcion\": \"blablabbla\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "borrar usuario registrado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"titulo\"] = responseBody.has(\"Problema id:12 Borrado\");\n"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/Problemas/12",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"usuario\": \"jorge\",\n    \"titulo\": \"once\",\n    \"descripcion\": \"once\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "comprobar borrado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 400\"] = responseCode.code === 400;\n\n"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/Problemas/12",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"titulo\": \"once\",\n    \"descripcion\": \"once\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar un problema por id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"mensaje\"] = responseBody.has(\"Problema modificado\");\n"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/Problemas/11",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"titulo\": \"once\",\n    \"descripcion\": \"once\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "comprobar modificado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\n"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/Problemas/11",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"titulo\": \"once\",\n    \"descripcion\": \"once\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "obtener lista preguntas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"mensaje paginación\"] = responseBody.has(\"anterior\");\ntests[\"mensaje2\"] = responseBody.has(\"holaaaa\");\n"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/preguntas?pagina=1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"titulo\": \"once\",\n    \"descripcion\": \"once\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "obtener pregunta por id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Problema\"] = responseBody.has(\"hola\");\n"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/preguntas/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"titulo\": \"once\",\n    \"descripcion\": \"once\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "obtener preguntas de un problema",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Problema\"] = responseBody.has(\"sola\");\ntests[\"desc1\"] = responseBody.has(\"holaaaaw\");\ntests[\"desc2\"] = responseBody.has(\"holaaaae\");\n"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/preguntas/problema/sola",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"titulo\": \"once\",\n    \"descripcion\": \"once\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "registrar una pregunta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"mensaje\"] = responseBody.has(\"pregunta Registrada\");\n\n"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/preguntas/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"problema\": \"Jooooojjllkjm2\",\n    \"descripcion\": \"123456ss78\",\n    \"usuario\": \"jorge\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "comprobar registrada",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"descripcion\"] = responseBody.has(\"123456ss78\");\n\n"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/preguntas?pagina=3",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"problema\": \"Jooooojjllkjm2\",\n    \"descripcion\": \"123456ss78\",\n    \"usuario\": \"jorge\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "borrar pregunta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"mensaje\"] = responseBody.has(\"pregunta id:14 Borrado\");\n\n"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/preguntas/14",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"problema\": \"Jooooojjllkjm2\",\n    \"descripcion\": \"123456ss78\",\n    \"usuario\": \"jorge\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "comprobar pregunta borrada",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 400\"] = responseCode.code === 400;\ntests[\"mensaje\"] = responseBody.has(\"No existe la pregunta\");\n\n"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/preguntas/15",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"problema\": \"Jooooojjllkjm2\",\n    \"descripcion\": \"123456ss78\",\n    \"usuario\": \"jorge\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "modificar pregunta ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"mensaje\"] = responseBody.has(\"pregunta modificado\");\n\n"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/preguntas/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"descripcion\": \"memodifico\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "comprobar modificar pregunta ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"mensaje\"] = responseBody.has(\"memodifico\");\n\n"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/preguntas/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"problema\": \"Jooooojjllkjm2\",\n    \"descripcion\": \"123456ss78\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "listar soluciones",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"mensaje\"] = responseBody.has(\"pagina\");\ntests[\"mensaje2\"] = responseBody.has(\"tigre\");\ntests[\"mensaje2\"] = responseBody.has(\"leon\");"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/solucion?pagina=1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"problema\": \"Jooooojjllkjm2\",\n    \"descripcion\": \"123456ss78\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar por id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"mensaje\"] = responseBody.has(\"solucion id:1 Borrado\");\n"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/solucion/1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"problema\": \"Jooooojjllkjm2\",\n    \"descripcion\": \"123456ss78\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "comprobar borrado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 400\"] = responseCode.code === 400;\ntests[\"mensaje\"] = responseBody.has(\"No existe la Solucion\");\n"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:5000/solucion/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dXN1YXJpbzoxMjM0NTY=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"problema\": \"Jooooojjllkjm2\",\n    \"descripcion\": \"123456ss78\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

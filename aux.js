@@ -1,6 +1,5 @@
 var mysql   = require('mysql');
 var jwt   = require('jwt-simple');
-var isInteger = require("is-integer");
 
 
 module.exports = function() { 

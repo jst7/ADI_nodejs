@@ -46,7 +46,11 @@ var id = req.params.id;
   
     connect().query('select * from Soluciones where id='+id+'', function(err, rows, fields) {
     if (err || rows.length==0){
-      res.status(500).send(Hipermedia('No existe la Solucion',4));
+      if(rows.length==0){
+        res.status(400).send(Hipermedia('No existe la Solucion',4));
+      }else{
+              res.status(500).send(Hipermedia('No existe la Solucion',4));
+            }
     }else{
       res.status(200).send(Hipermedia(rows,4));
     }
@@ -118,7 +122,7 @@ solucion.post('/',autenticaBasic,function(req,res){
 });
 
   /**
-  * Este funcion es para obtener el tema de una solucion
+  * Este funcion es para obtener la infromacion pregunta de una solucion
   * @name Obtener_pregunta_problema_solucion
   * @param {res} resultado de la consulta a la bd
   * @example /solucion/:pregunta/:problema (GET)

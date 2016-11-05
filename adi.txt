@@ -1,0 +1,147 @@
+Caso de uso:
+
+1 Obtener la lista de todos los usuarios id y nombre (paginado)
+GET /usuarios?pagina=1 
+Solo busca los usuarios no los problemas relacionados.
+
+2 Obtener usuario por id
+GET /usuarios/:id
+Recupera la información del usuario concreto entero sin los objetos relacionados
+
+3 Buscar usuario por nombre
+GET /usuarios/nombre/:nombre
+Permite buscar los usuarios  
+
+4 Registrar un usuario
+POST /usuarios/
+Permite registrar un usuario
+
+5 Borrar usuario por id
+DELETE /usuarios/:id
+Permite borrar un usuario dado un id
+
+6 Autentificar usuario
+POST /usuarios/autentificar
+Permite autentificar un usuario y ademas recibe un token para no tener que volver a autentificarse durante la sesión.
+
+7 Modificar usuario
+PUT /usuarios/:id
+Permite modificar el nombre contraseña o correo del usuario.
+
+8 Obtener la lista de todos los problemas (paginado)
+GET /problemas?pagina=1 
+Solo busca los problemas con su usuario no las preguntas relacionadas.
+
+9 Obtener problema por id
+GET /problemas/:id
+Recupera la información del problema concreto entero con su usuario sin las preguntas relacionadas.
+
+10 Buscar problema por titulo
+GET /problemas/titulo/:titulo
+Permite buscar los problemas
+
+11 Obtener problemas de un usuario
+GET  /problemas/usuario/:nombre
+Permite obtener los problema de un usuario
+
+12 Registrar un problema
+POST /problemas/
+Permite registrar un problema de un usuario
+
+13 Borrar problema por id
+DELETE /problemas/:id
+Permite borrar un problema dado un id
+
+14 Modificar problema
+PUT /problemas/:id
+Permite modificar el titulo o descripción del problema.
+
+15 Obtener lista de las preguntas con su usuario y problema(paginado)
+GET /preguntas?paginas=1
+Permite recuperar las preguntas de usuario con su problema.
+
+16 Obtener por id una pregunta con su usuario y su problema 
+GET /preguntas/:id
+obtiene las preguntas con todos sus datos
+
+17 Obtener las preguntas de un problema
+GET /preguntas/problema/:problema
+obtiene las preguntas dado un problema concreto
+
+18 Registrar una pregunta
+POST /preguntas/
+Permite registrar una pregunta de un problema y usuario
+
+19 Borrar pregunta por id
+DELETE /preguntas/:id
+Permite borrar una pregunta dado su id
+
+20 Modificar pregunta
+PUT /preguntas/:id
+Permite modificar la descripción de la pregunta.
+
+21 Obtener la lista de todos las soluciones (paginado)
+GET /solucion?pagina=1 
+Solo busca las solucion con su usuario y preguntas relacionadas.
+
+22 Obtener solucion por id
+GET /solucion/:id
+Recupera la información de la solucion en concreto entero con su usuario y las preguntas relacionadas.
+
+23 Borrar solucion por id
+DELETE /solucion/:id
+Permite borrar una solucion dado un id
+
+24 Modificar una solucion
+PUT /problema/:id
+Permite modificar el titulo(solucion) de una solucion
+
+25 Registrar una solución
+POST /solucion/
+Permite registrar una solucion de una pregunta y usuario
+
+26 Obtener la pregunta de una solucion
+GET /solucion/pregunta/:pregunta/:problema
+Dada una pregunta y un problema obtener los datos de pregunta
+
+Autenticación:
+
+	Autenticación BASIC: 
+	Necesitan autorización basic todos para que no puedan conectarse a mi api aplicaciones de terceros.
+
+
+Historia de usuario:
+
+	1.- Siendo los administradores, tenemos un listado de usuarios (GET /usuarios) y queremos eliminar uno por incumplir las condiciones de la web, por tanto accedemos a el (GET /usuarios/:id) y con el botón de eliminar (DELETE /artisas/:id) eliminaría el usuario.
+
+	2.- Listamos todos los problemas (GET /problemas?pagina=1) después queremos ver la descripción de un problema en concreto y al pinchar en el (GET /problemas/:id) podriamos ver las preguntas que ha dado ese problema (GET /preguntas/problema/:problema) y podríamos registrar una solución a la pregunta del problema (POST /solucion/).
+
+
+
+Requisitos adicionales implementados:
+
+	- Base de datos MySQL
+	- JSON Web Token
+	- Documentar el API
+		//documentation build
+		//documentation serve
+		//http://localhost:4001/
+		Carpeta documentacion.
+	- Hipermedia en el API
+	- Heroku
+
+Pasos para el despliegue
+Ejecutar script BD
+cambiar usuario y contraseña en aux.js:
+    this.connect = function() { 
+    	var result 	=  mysql.createConnection({
+					  host     : 'localhost',
+					  user     : 'root',
+					  password : 'mads',
+					  database : 'ADI_Prac'
+					})
+
+		return result
+	}
+A los de la bd local.
+Ejecutar la práctica.

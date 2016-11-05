@@ -17,7 +17,7 @@ usuario.get('/',autenticaBasic,function(req,res,next){
 
 ultimaPosicion('Usuario', function(err, total){
     var testo = paginacion(req,itemPorPagina)
-    var consulta = 'select * from Usuario' + testo
+    var consulta = 'select id, nombre from Usuario' + testo
 
     var paginas = paginas_paginacion("usuarios/",req.query.pagina,total)
     connect().query(consulta, function(err, rows, fields) {
@@ -51,6 +51,26 @@ usuario.get('/:id',autenticaBasic,function(req,res){
 });
 
   /**
+  * Este funcion es para obtener un usuario por nombre no saca los problemas relacionados
+  * @name Obtener_usuario_nombre
+  * @param {res} resultado de la consulta a la bd
+  * @example /usuarios/nombre/:nombre (GET)
+  * @return {resultado consulta}
+  */
+usuario.get('/nombre/:nombre',autenticaBasic,function(req,res){
+
+  var nombre = req.params.nombre;
+    
+      connect().query('select id, nombre from Usuario where nombre like \'%'+nombre+'%\'', function(err, rows, fields) {
+        if (err || rows.length==0){
+          res.status(500).send(Hipermedia('No existe el usuario',1))
+        }else{
+          res.status(200).send(Hipermedia(rows,1))
+      }
+    });
+});
+
+  /**
   * Este funcion es para registrar un usuario
   * @name Registrar_usuario
   * @param {res} resultado de la consulta a la bd
@@ -64,9 +84,7 @@ usuario.post('/',autenticaBasic,function(req,res){
   var email = req.body.email;
 
   try{
-  connect().query('select * from Usuario Where email=\''+email+'\'', function(err, rows, fields) { 
 
-    if(rows.length==0){
       connect().query('insert into Usuario (nombre,contraseña,email) values (\''+nombre+'\',\''+pass+'\',\''+email+'\');', function(err, rows, fields) { 
       if (err){
         res.status(500).send(Hipermedia('ERROR SERVER',1))
@@ -75,11 +93,8 @@ usuario.post('/',autenticaBasic,function(req,res){
       }
       })
     }
-    else{
-      res.status(401).send(Hipermedia('Ya registrado',1))
-    }
-    })
-  }catch(Ex){
+    
+  catch(Ex){
       res.status(401).send(Hipermedia(Ex,1));
   }
 });

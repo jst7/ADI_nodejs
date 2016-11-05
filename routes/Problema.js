@@ -44,12 +44,35 @@ var id = req.params.id;
   
     connect().query('select * from Problema where id='+id+'', function(err, rows, fields) {
     if (err || rows.length==0){
+      res.status(400).send(Hipermedia('No existe el Problema',2));
+    }else{
+      res.status(200).send(Hipermedia(rows,2));
+    }
+  });
+});
+
+  /**
+  * Este funcion es para obtener un Problema por su titulo o parte de él no saca las decisiones relacionadas
+  * @name Obtener_Problema_titulo
+  * @param {res} resultado de la consulta a la bd
+  * @example /Problemas/titulo/:titulo (GET)
+  * @return {resultado consulta}
+  */
+//OBTENER Problema POR Titulo
+Problema.get('/titulo/:titulo',autenticaBasic,function(req,res){
+
+var titulo = req.params.titulo;
+  
+    connect().query('select * from Problema where titulo like  \'%'+titulo+'%\'', function(err, rows, fields) {
+    if (err || rows.length==0){
       res.status(500).send(Hipermedia('No existe el Problema',2));
     }else{
       res.status(200).send(Hipermedia(rows,2));
     }
   });
 });
+
+
 
   /**
   * Este funcion es para obtener los Problemas por usuario, no saca las decisiones relacionadas

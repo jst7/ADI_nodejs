@@ -1,0 +1,1885 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>practica1 1.0.0 | Documentation</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style class="anchorjs"></style><link href="practica1%201.0.0%20%7C%20Documentation_files/bass.css" type="text/css" rel="stylesheet">
+  <link href="practica1%201.0.0%20%7C%20Documentation_files/style.css" type="text/css" rel="stylesheet">
+  <link href="practica1%201.0.0%20%7C%20Documentation_files/github.css" type="text/css" rel="stylesheet">
+</head>
+<body class="documentation">
+  <div class="max-width-4 mx-auto">
+    <div class="clearfix md-mxn2">
+      <div class="fixed xs-hide fix-3 overflow-auto max-height-100">
+        <div class="py1 px2">
+          <h3 class="mb0 no-anchor" id="practica1"><a class="anchorjs-link " href="#practica1" aria-label="Anchor link for: practica1" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>practica1</h3>
+          <div class="mb1"><code>1.0.0</code></div>
+          <input placeholder="Filter" id="filter-input" class="col12 block input" type="text">
+          <div id="toc">
+            <ul class="list-reset h5 py1-ul">
+              
+                
+                <li><a href="#obtener_lista_usuarios" class="">
+                  Obtener_lista_usuarios
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#obtener_usuario_id" class="">
+                  Obtener_usuario_id
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#obtener_usuario_nombre" class="">
+                  Obtener_usuario_nombre
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#registrar_usuario" class="">
+                  Registrar_usuario
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#borrar_usuario" class="">
+                  Borrar_usuario
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#autentificar_usuario" class="">
+                  Autentificar_usuario
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#modififcar_usuario" class="">
+                  Modififcar_usuario
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#obtener_lista_problemas" class="">
+                  Obtener_lista_Problemas
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#obtener_problema_id" class="">
+                  Obtener_Problema_id
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#obtener_problema_titulo" class="">
+                  Obtener_Problema_titulo
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#obtener_problema_nombreusuario" class="">
+                  Obtener_Problema_nombreUsuario
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#registrar_problema" class="">
+                  Registrar_Problema
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#borrar_problema" class="">
+                  Borrar_Problema
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#modififcar_problema" class="">
+                  Modififcar_Problema
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#obtener_lista_preguntas" class="">
+                  Obtener_lista_Preguntas
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#obtener_pregunta_id" class="">
+                  Obtener_pregunta_id
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#obtener_problemas_pregunta" class="">
+                  Obtener_Problemas_Pregunta
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#registrar_pregunta" class="">
+                  Registrar_pregunta
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#borrar_pregunta" class="">
+                  Borrar_pregunta
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#modificar_pregunta" class="">
+                  Modificar_pregunta
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#obtener_lista_soluciones" class="">
+                  Obtener_lista_Soluciones
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#obtener_solucion_id" class="">
+                  Obtener_Solucion_id
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#borrar_solucion" class="">
+                  Borrar_solucion
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#modififcar_solucion" class="">
+                  Modififcar_solucion
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#registrar_solucion" class="">
+                  Registrar_solucion
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a href="#obtener_pregunta_problema_solucion" class="">
+                  Obtener_pregunta_problema_solucion
+                  
+                </a>
+                
+                </li>
+              
+            </ul>
+          </div>
+          <div class="mt1 h6 quiet">
+            <a href="http://documentation.js.org/reading-documentation.html">Need help reading this?</a>
+          </div>
+        </div>
+      </div>
+      <div class="fix-margin-3">
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="obtener_lista_usuarios"><a class="anchorjs-link " href="#obtener_lista_usuarios" aria-label="Anchor link for: obtener_lista_usuarios" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Obtener_lista_usuarios
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para obtener todas los usuarios y no saca objetos 
+relacionados por el peso que puede tener en grandes cantidades.</p>
+
+
+  <div class="pre p1 fill-light mt0">Obtener_lista_usuarios</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/usuarios?pagina=<span class="hljs-number">1</span> (cualquier numero) (GET)</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="obtener_usuario_id"><a class="anchorjs-link " href="#obtener_usuario_id" aria-label="Anchor link for: obtener_usuario_id" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Obtener_usuario_id
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para obtener un usuario por id no saca los problemas relacionados</p>
+
+
+  <div class="pre p1 fill-light mt0">Obtener_usuario_id</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/usuarios/id (GET)</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="obtener_usuario_nombre"><a class="anchorjs-link " href="#obtener_usuario_nombre" aria-label="Anchor link for: obtener_usuario_nombre" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Obtener_usuario_nombre
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para obtener un usuario por nombre no saca los problemas relacionados</p>
+
+
+  <div class="pre p1 fill-light mt0">Obtener_usuario_nombre</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/usuarios/nombre/:nombre (GET)</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="registrar_usuario"><a class="anchorjs-link " href="#registrar_usuario" aria-label="Anchor link for: registrar_usuario" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Registrar_usuario
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para registrar un usuario</p>
+
+
+  <div class="pre p1 fill-light mt0">Registrar_usuario</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/usuarios (POST con (nombre, pass, email))</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="borrar_usuario"><a class="anchorjs-link " href="#borrar_usuario" aria-label="Anchor link for: borrar_usuario" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Borrar_usuario
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para borrar un usuario</p>
+
+
+  <div class="pre p1 fill-light mt0">Borrar_usuario</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/usuarios/id (DELETE)</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="autentificar_usuario"><a class="anchorjs-link " href="#autentificar_usuario" aria-label="Anchor link for: autentificar_usuario" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Autentificar_usuario
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para autentificar un usuario</p>
+
+
+  <div class="pre p1 fill-light mt0">Autentificar_usuario</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/usuarios/id (POST con (pass email))</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="modififcar_usuario"><a class="anchorjs-link " href="#modififcar_usuario" aria-label="Anchor link for: modififcar_usuario" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Modififcar_usuario
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para modificar un usuario</p>
+
+
+  <div class="pre p1 fill-light mt0">Modififcar_usuario</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/usuarios/id (PUT con (nombre, contraseña, email))</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="obtener_lista_problemas"><a class="anchorjs-link " href="#obtener_lista_problemas" aria-label="Anchor link for: obtener_lista_problemas" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Obtener_lista_Problemas
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para obtener todos los Problemas, no saca las preguntas relacionadas pero si el usuario</p>
+
+
+  <div class="pre p1 fill-light mt0">Obtener_lista_Problemas</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/problemas?pagina=<span class="hljs-number">1</span> (GET)</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="obtener_problema_id"><a class="anchorjs-link " href="#obtener_problema_id" aria-label="Anchor link for: obtener_problema_id" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Obtener_Problema_id
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para obtener un Problema por id no saca las decisiones relacionadas</p>
+
+
+  <div class="pre p1 fill-light mt0">Obtener_Problema_id</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/Problemas/id (GET)</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="obtener_problema_titulo"><a class="anchorjs-link " href="#obtener_problema_titulo" aria-label="Anchor link for: obtener_problema_titulo" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Obtener_Problema_titulo
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para obtener un Problema por su titulo o parte de él no saca las decisiones relacionadas</p>
+
+
+  <div class="pre p1 fill-light mt0">Obtener_Problema_titulo</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/Problemas/titulo/:titulo (GET)</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="obtener_problema_nombreusuario"><a class="anchorjs-link " href="#obtener_problema_nombreusuario" aria-label="Anchor link for: obtener_problema_nombreusuario" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Obtener_Problema_nombreUsuario
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para obtener los Problemas por usuario, no saca las decisiones relacionadas</p>
+
+
+  <div class="pre p1 fill-light mt0">Obtener_Problema_nombreUsuario</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/Problemas/:nombre (GET)</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="registrar_problema"><a class="anchorjs-link " href="#registrar_problema" aria-label="Anchor link for: registrar_problema" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Registrar_Problema
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para registrar un Problema</p>
+
+
+  <div class="pre p1 fill-light mt0">Registrar_Problema</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/Problema/registrar (POST con (usuario, titulo, descripcion))</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="borrar_problema"><a class="anchorjs-link " href="#borrar_problema" aria-label="Anchor link for: borrar_problema" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Borrar_Problema
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para borrar un Problema</p>
+
+
+  <div class="pre p1 fill-light mt0">Borrar_Problema</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/Problemas/borrar/id (DELETE)</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="modififcar_problema"><a class="anchorjs-link " href="#modififcar_problema" aria-label="Anchor link for: modififcar_problema" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Modififcar_Problema
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para modificar un Problema</p>
+
+
+  <div class="pre p1 fill-light mt0">Modififcar_Problema</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/Problemas/modificar/id (PUT con (titulo, descripcion))</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="obtener_lista_preguntas"><a class="anchorjs-link " href="#obtener_lista_preguntas" aria-label="Anchor link for: obtener_lista_preguntas" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Obtener_lista_Preguntas
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para obtener todas las Preguntas con su problema pero no soluciones</p>
+
+
+  <div class="pre p1 fill-light mt0">Obtener_lista_Preguntas</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/pregunta?pagina=<span class="hljs-number">1</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="obtener_pregunta_id"><a class="anchorjs-link " href="#obtener_pregunta_id" aria-label="Anchor link for: obtener_pregunta_id" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Obtener_pregunta_id
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para obtener una pregunta por id con su problema sin sus soluciones</p>
+
+
+  <div class="pre p1 fill-light mt0">Obtener_pregunta_id</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/pregunta/id</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="obtener_problemas_pregunta"><a class="anchorjs-link " href="#obtener_problemas_pregunta" aria-label="Anchor link for: obtener_problemas_pregunta" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Obtener_Problemas_Pregunta
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para obtener las preguntas de un rpoblema</p>
+
+
+  <div class="pre p1 fill-light mt0">Obtener_Problemas_Pregunta</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/pregunta/problema/:problema</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="registrar_pregunta"><a class="anchorjs-link " href="#registrar_pregunta" aria-label="Anchor link for: registrar_pregunta" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Registrar_pregunta
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para registrar una pregunta</p>
+
+
+  <div class="pre p1 fill-light mt0">Registrar_pregunta</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/pregunta (POST con (problema, tema, descripcion))</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="borrar_pregunta"><a class="anchorjs-link " href="#borrar_pregunta" aria-label="Anchor link for: borrar_pregunta" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Borrar_pregunta
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para borrar una pregunta</p>
+
+
+  <div class="pre p1 fill-light mt0">Borrar_pregunta</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/pregunta/id (DELETE)</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="modificar_pregunta"><a class="anchorjs-link " href="#modificar_pregunta" aria-label="Anchor link for: modificar_pregunta" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Modificar_pregunta
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para modificar una pregunta</p>
+
+
+  <div class="pre p1 fill-light mt0">Modificar_pregunta</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/pregunta/modificar/id (PUT con (descripcion))</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="obtener_lista_soluciones"><a class="anchorjs-link " href="#obtener_lista_soluciones" aria-label="Anchor link for: obtener_lista_soluciones" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Obtener_lista_Soluciones
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para obtener todas las soluciones con su pregunta</p>
+
+
+  <div class="pre p1 fill-light mt0">Obtener_lista_Soluciones</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/solucion?pagina=<span class="hljs-number">1</span> (GET)</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="obtener_solucion_id"><a class="anchorjs-link " href="#obtener_solucion_id" aria-label="Anchor link for: obtener_solucion_id" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Obtener_Solucion_id
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para obtener un Problema por id no saca las decisiones relacionadas</p>
+
+
+  <div class="pre p1 fill-light mt0">Obtener_Solucion_id</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/solucion/id (GET)</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="borrar_solucion"><a class="anchorjs-link " href="#borrar_solucion" aria-label="Anchor link for: borrar_solucion" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Borrar_solucion
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para borrar una solucion</p>
+
+
+  <div class="pre p1 fill-light mt0">Borrar_solucion</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/solucion/id (DELETE)</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="modififcar_solucion"><a class="anchorjs-link " href="#modififcar_solucion" aria-label="Anchor link for: modififcar_solucion" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Modififcar_solucion
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para modificar una solucion</p>
+
+
+  <div class="pre p1 fill-light mt0">Modififcar_solucion</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/pregunta/modificar/id (PUT con (solucion))</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="registrar_solucion"><a class="anchorjs-link " href="#registrar_solucion" aria-label="Anchor link for: registrar_solucion" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Registrar_solucion
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para registrar un Problema</p>
+
+
+  <div class="pre p1 fill-light mt0">Registrar_solucion</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/solucion (POST con (pregunta, solucion, usuario,votos))</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class="p2 mb2 clearfix bg-white minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="fl m0" id="obtener_pregunta_problema_solucion"><a class="anchorjs-link " href="#obtener_pregunta_problema_solucion" aria-label="Anchor link for: obtener_pregunta_problema_solucion" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+      Obtener_pregunta_problema_solucion
+    </h3>
+    
+  </div>
+  
+
+  <p>Este funcion es para obtener la infromacion pregunta de una solucion</p>
+
+
+  <div class="pre p1 fill-light mt0">Obtener_pregunta_problema_solucion</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Parameters</div>
+    <div class="prose">
+      
+        <div class="space-bottom0">
+          <div>
+            <span class="code bold">resultado</span> <code class="quiet">(res)</code> de la consulta a la bd
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+    
+      
+      <pre class="p1 overflow-auto round fill-light">/solucion/:pregunta/:problema (GET)</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+      </div>
+    </div>
+  </div>
+  <script src="practica1%201.0.0%20%7C%20Documentation_files/anchor.js"></script>
+  <script src="practica1%201.0.0%20%7C%20Documentation_files/site.js"></script>
+
+
+</body></html>

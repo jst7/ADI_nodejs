@@ -11,7 +11,7 @@ require('../aux')();
   * Este funcion es para obtener todas las Preguntas con su problema pero no soluciones
   * @name Obtener_lista_Preguntas
   * @param {res} resultado de la consulta a la bd
-  * @example /pregunta
+  * @example /pregunta?pagina=1
   * @return {resultado consulta}
   */
 pregunta.get('/',autenticaBasic,function(req,res){
@@ -44,7 +44,7 @@ var id = req.params.id;
   
     connect().query('select * from Pregunta where id='+id+'', function(err, rows, fields) {
     if (err || rows.length==0){
-      res.status(500).send(Hipermedia('No existe la pregunta',3))
+      res.status(400).send(Hipermedia('No existe la pregunta',3))
     }else{
       res.status(200).send(Hipermedia(rows,3))
     }
@@ -52,7 +52,7 @@ var id = req.params.id;
 });
 
   /**
-  * Este funcion es para obtener los problemas de una pregunta
+  * Este funcion es para obtener las preguntas de un rpoblema
   * @name Obtener_Problemas_Pregunta
   * @param {res} resultado de la consulta a la bd
   * @example /pregunta/problema/:problema
